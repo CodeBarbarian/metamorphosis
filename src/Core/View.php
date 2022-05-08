@@ -66,7 +66,7 @@ class View {
 			$Loader = new FilesystemLoader(dirname(__DIR__) . '/App/Views');
 			$Twig = new Environment($Loader);
 
-			$Twig->addGlobal('public_root', Paths::getWebRoot());
+			$Twig->addGlobal('site_root', Paths::SITE_ROOT());
 		}
 
 		if (!empty($Template)) {

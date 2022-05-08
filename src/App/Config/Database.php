@@ -27,11 +27,11 @@ class Database extends Config {
      * Database user
      * @var string
      */
-    const DB_USER = 'developer';
+    const DB_USER = 'metamorphosis';
     
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = 'developer';
+    const DB_PASSWORD = 'metamorphosis';
 }

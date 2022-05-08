@@ -12,11 +12,11 @@ use Core\Config;
  */
 class Paths extends Config {
 	/**
-	 * Public Root
+	 * Get HTTP HOST, with correct SSL settings
+	 *
+	 * @return string
 	 */
-	const PUBLIC_ROOT = "./";
-
-	public static function getWebRoot() : string {
-		return ((\App\Config\Site::SECURE_SERVER_COMMUNICATION) ? "https://" : "http://") . $_SERVER['HTTP_HOST'];
+	public static function SITE_ROOT() : string {
+		return ((Site::SECURE_SERVER_COMMUNICATION) ? "https://" : "http://") . $_SERVER['HTTP_HOST'];
 	}
 }
