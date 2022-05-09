@@ -30,7 +30,7 @@ abstract class Plugin implements iPlugin {
 		$ClassName = $ClassName->getShortName();
 
 		// Test if the configuration file actually exists
-		if (!file_exists('../App/Plugins/'.$ClassName.'/'.$ClassName.'.php')) {
+		if (!file_exists('../App/Plugins/'.$ClassName.'/'.'config_'.$ClassName.'.php')) {
 			return false;
 		}
 
