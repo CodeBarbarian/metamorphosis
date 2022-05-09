@@ -2,12 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Plugins\HelloWorld\HelloWorld ;
 use Core\Controller;
 use Core\View;
 
 use App\Models\HomeModel;
-
-use Plugin\ExamplePlugin;
 
 /**
  * Home controller
@@ -26,9 +25,8 @@ class Home extends Controller {
 	 * @throws \Twig\Error\SyntaxError
      */
     public function indexAction(): void {
+		$Plugin = new HelloWorld();
 
-		$ExamplePlugin = new ExamplePlugin();
-		var_dump($ExamplePlugin->ready());
-        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting()]);
+        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'plugin_output' => $Plugin->HelloWorld()]);
     }
 }
