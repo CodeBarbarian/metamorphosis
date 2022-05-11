@@ -7,6 +7,7 @@ namespace Core;
 
 /**
  * Unique random tokens
+ * @version: PHP: 8.1
  *
  * @Token
  */

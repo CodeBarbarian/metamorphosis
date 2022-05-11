@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Plugins\HelloWorld\HelloWorld ;
+use Core\Plugins\HelloWorld\HelloWorld ;
 use Core\Controller;
 use Core\View;
 
@@ -27,6 +27,6 @@ class Home extends Controller {
     public function indexAction(): void {
 		$Plugin = new HelloWorld();
 
-        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'plugin_output' => $Plugin->HelloWorld()]);
+        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'plugin_output' => $Plugin->execute()]);
     }
 }
