@@ -26,7 +26,7 @@ abstract class Plugin {
 	private function getConfigFilename() : string {
 		$ClassName = $this->getClassName();
 
-		return '../Core/Plugins/'.$ClassName.'/config_'.$ClassName.'.php';
+		return '../Core/Plugins/'.$ClassName.'/'.$ClassName.'Config.php';
 	}
 
 	/**

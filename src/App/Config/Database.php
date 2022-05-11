@@ -11,6 +11,18 @@ use Core\Config;
  * @Database
  */
 class Database extends Config {
+
+	/**
+	 * Is database turned on
+	 */
+	const USE_DATABASE = false;
+
+	/**
+	 * Database Driver
+	 * @var string
+	 * */
+	const DB_DRIVER = 'mysql';
+
     /**
      * Database host
      * @var string

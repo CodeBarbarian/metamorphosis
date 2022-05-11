@@ -4,13 +4,15 @@ namespace Core\Policies\Firewall;
 
 use Core\Policies\iPolicyEngine;
 use Core\Policies\Firewall\Inbound\FirewallPolicy;
+use Core\Policies\PolicyEngine;
 
 /**
  * Firewall Engine
- *
  * @version: PHP: 8.1
+ *
+ * @Firewall
  */
-class Firewall implements iPolicyEngine {
+class Firewall extends PolicyEngine implements iPolicyEngine {
 	/**
 	 * Retrieve Remote Server Address.
 	 * Depending on implementation this is easier for now. As time

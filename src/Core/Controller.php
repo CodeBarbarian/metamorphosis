@@ -5,6 +5,8 @@ namespace Core;
 use Exception;
 use App\Config\Site;
 
+use Core\Policies\Firewall\Firewall;
+
 /**
  * Base controller
  * @version: PHP: 8.1
@@ -46,6 +48,9 @@ abstract class Controller {
 		$Method = $Name . 'Action';
 
 		if (method_exists($this, $Method)) {
+			// Add the firewall engine
+			Firewall::enforceCompliance();
+
 			if ($this->before() !== false) {
 				call_user_func_array([$this, $Method], $Args);
 				$this->after();

@@ -57,9 +57,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -78,34 +75,41 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
 Metamorphosis is a PHP framework where I try to update my self on using the new PHP 8.1 syntax, as well as figuring out what the best practices are when it comes to writing PHP in 2022.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-* Twig will be used as the template engine
-
-
-### Built With
-n/a
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
-n/a
+Download the latest stable release, or use a development build. 
+
+Stable releases are meant for production, and development builds are meant for development.
+The core of the framework should not change so much that there will be notable different between development and production.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Prerequisites
-n/a
+A running instance of WAMP or LAMP.
+
+* Make sure you have enabled the use of .htaccess files on your instance. (It usually looks like this): 
+```text
+<Directory /var/www/html/example.com/public_html>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Installation
 
-n/a
+Installation is simple! 
+1. Download the release you want to use
+2. Unpack it
+3. Define your routes, controllers and models
+4. Bob's your uncle!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -167,10 +171,7 @@ Project Link: [https://github.com/codebarbarian/metamorphosis](https://github.co
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-* []()
-* []()
-* []()
+None as of yet.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

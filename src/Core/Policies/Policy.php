@@ -15,6 +15,5 @@ class Policy implements iPolicy {
 	 * @return bool
 	 */
 	public static function checkCompliance($ComplianceItem) : bool {
-		// TODO: Implement checkCompliance() method.
 	}
 }
