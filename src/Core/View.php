@@ -6,6 +6,8 @@ use App\Config\Paths;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
+use Core\Localization\Localization;
+
 /**
  * View
  * @version: PHP: 8.1
@@ -42,6 +44,7 @@ class View {
 	 * @throws \Twig\Error\LoaderError
 	 * @throws \Twig\Error\RuntimeError
 	 * @throws \Twig\Error\SyntaxError
+	 * @throws \ReflectionException
 	 */
 	public static function renderTemplate(string $Template, array $Args = []): void {
 		echo static::getTemplate($Template, $Args);
@@ -58,6 +61,7 @@ class View {
 	 * @throws \Twig\Error\LoaderError
 	 * @throws \Twig\Error\RuntimeError
 	 * @throws \Twig\Error\SyntaxError
+	 * @throws \ReflectionException
 	 */
 	public static function getTemplate(string $Template, array $Args = []): string|bool {
 		static $Twig = null;
@@ -66,7 +70,9 @@ class View {
 			$Loader = new FilesystemLoader(dirname(__DIR__) . '/App/Views');
 			$Twig = new Environment($Loader);
 
+			$Twig->addGlobal('translation', Localization::Translate());
 			$Twig->addGlobal('site_root', Paths::SITE_ROOT());
+
 		}
 
 		if (!empty($Template)) {

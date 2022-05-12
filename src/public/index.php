@@ -1,17 +1,4 @@
 <?php
-
-/**
- * Front controller
- *  : Frontcontroller is the main controller for the Aeolus framework. It takes care of the route setting
- *      and execution of the dispatch.
- *
- * @author: Morten Haugstad
- * @version: 1.0
- * @description: Front Controller for routing and Dispatch
- * @requires: /vendor/autolaod.php
- *
- */
-
 /**
  * Composer
  */
