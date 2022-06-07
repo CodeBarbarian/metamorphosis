@@ -22,8 +22,8 @@ class Home extends Controller {
      * @return void
 	 * @throws \Twig\Error\LoaderError
 	 * @throws \Twig\Error\RuntimeError
-	 * @throws \Twig\Error\SyntaxError
-     */
+	 * @throws \Twig\Error\SyntaxError|\ReflectionException
+	 */
     public function indexAction(): void {
 		$Plugin = new HelloWorld();
 

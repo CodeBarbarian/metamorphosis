@@ -19,5 +19,5 @@ class Language extends \Core\Config {
 	 * Fallback language if for some reason it can't find anything matching in the web browser.
 	 * @var string
 	 */
-	const FALLBACK_LANGUAGE = "NO";
+	const FALLBACK_LANGUAGE = "EN";
 }

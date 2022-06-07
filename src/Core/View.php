@@ -7,6 +7,8 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 use Core\Localization\Localization;
+use Core\Plugins\Flashcard\Flashcard;
+
 
 /**
  * View
@@ -70,8 +72,10 @@ class View {
 			$Loader = new FilesystemLoader(dirname(__DIR__) . '/App/Views');
 			$Twig = new Environment($Loader);
 
+			$Twig->addGlobal('public_root', Paths::SITE_ROOT());
+			$Twig->addGlobal('flash_messages', Flashcard::getMessages());
 			$Twig->addGlobal('translation', Localization::Translate());
-			$Twig->addGlobal('site_root', Paths::SITE_ROOT());
+
 
 		}
 
