@@ -29,10 +29,12 @@ class Home extends Controller {
 		 * As an example we have a plugin named HelloWorld, which will print Hello World!
 		 * I am not that happy with the plugin system, and kinda would like to redo it some time in the future.
 		 * But it is a good start, and should be dynamic enough for some simple use cases.
-		 */
+
 		$Plugin = new HelloWorld();
 		$PluginOutput = $Plugin->execute();
+		 */
 
-        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'plugin_output' => $PluginOutput]);
+
+        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting()]);
     }
 }
