@@ -35,6 +35,7 @@ class Firewall extends PolicyEngine implements iPolicyEngine {
 	 */
 	public static function enforceCompliance(): void {
 		if (FirewallPolicy::checkCompliance(self::getRemoteAddress())) {
+			http_response_code(403);
 			die("Sorry, you are not allowed to enter the site");
 		}
 	}

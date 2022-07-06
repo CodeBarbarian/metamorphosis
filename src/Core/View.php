@@ -75,8 +75,6 @@ class View {
 			$Twig->addGlobal('public_root', Paths::SITE_ROOT());
 			$Twig->addGlobal('flash_messages', Flashcard::getMessages());
 			$Twig->addGlobal('translation', Localization::Translate());
-
-
 		}
 
 		if (!empty($Template)) {

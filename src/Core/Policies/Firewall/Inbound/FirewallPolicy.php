@@ -16,7 +16,10 @@ class FirewallPolicy implements iPolicy {
 	 * @var array
 	 */
 	const INBOUND_RULES_BLACKLIST = array (
-
+		/*
+		"127.0.0.1",
+		"::1"
+		*/
 	);
 
 	/**

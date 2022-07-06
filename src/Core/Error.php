@@ -40,7 +40,7 @@ class Error {
 	 * @return void
 	 * @throws \Twig\Error\LoaderError
 	 * @throws \Twig\Error\RuntimeError
-	 * @throws \Twig\Error\SyntaxError
+	 * @throws \Twig\Error\SyntaxError|\ReflectionException
 	 */
 	public static function exceptionHandler($Exception): void {
 		// Code is 404 (not found) or 500 (general error)
