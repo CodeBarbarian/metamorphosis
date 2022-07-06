@@ -25,8 +25,12 @@ class Home extends Controller {
 	 * @throws \Twig\Error\SyntaxError|\ReflectionException
 	 */
     public function indexAction(): void {
+		/**
+		 * As an example we have a plugin named HelloWorld, which will print Hello World!
+		 */
 		$Plugin = new HelloWorld();
+		$PluginOutput = $Plugin->execute();
 
-        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'plugin_output' => $Plugin->execute()]);
+        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'plugin_output' => $PluginOutput]);
     }
 }
