@@ -13,10 +13,11 @@ Add plugins for
     * Prevent single file execution
     * Prevent directory listings
   * Add more policies (About everything)
+  * Install script for database
 
 DOING: 
 * User Management (AAA) - Have a look at the plugin AAA.
 
 DONE:
 * Error Messages (Flash Cards) -- See plugin flashcard, added rendering for it in _design.html as well.
-  * Plugin atuomatically assumes you are using bootstrap as well.
+* Plugin automatically assumes you are using bootstrap as well.
