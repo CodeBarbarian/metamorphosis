@@ -3,7 +3,6 @@ PLANNED:
 Add plugins for
   * Email Handling
   * Web Request (Scraping and so on)
-  * Logging
   * Add additional Data to Error Handler
     * Improved stack trace
   * Add System for Fake Data
@@ -16,8 +15,8 @@ Add plugins for
   * Install script for database
 
 DOING: 
-* User Management (AAA) - Have a look at the plugin AAA.
-
+* User Management
+* Logging
 DONE:
 * Error Messages (Flash Cards) -- See plugin flashcard, added rendering for it in _design.html as well.
 * Plugin automatically assumes you are using bootstrap as well.
