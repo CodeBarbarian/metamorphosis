@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Core\Plugins\HelloWorld\HelloWorld ;
+use Core\Plugins\HelloWorld\HelloWorld;
 use Core\Controller;
 use Core\View;
 
