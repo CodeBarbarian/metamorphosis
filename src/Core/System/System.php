@@ -1,20 +1,23 @@
 <?php
 
 namespace Core\System;
+use App\Config\Paths;
 
 class System {
     /**
-     * Get the framework version from the version.dat file
-     * @todo: test function properly.
+     * Get the framework version from the version.txt file
      * @return string|bool
      */
     public static function getVersion() : string|bool {
-        if (file_exists('./version.dat') && is_readable('./version.dat')) {
-            $File = fopen('./version.dat', 'r');
+		$Filename = '../'.Paths::SYSTEM_DIR.'/version.txt';
+
+        if (file_exists($Filename) && is_readable($Filename)) {
+            $File = fopen($Filename, 'r');
             $Version = fgets($File);
             fclose($File);
-            
-            return $Version;
+
+			// Hacky to get a float to be able to check if correctly
+            return (floatval($Version) ? $Version : false);
         }
         return false;
     }

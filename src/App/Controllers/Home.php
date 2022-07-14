@@ -7,6 +7,8 @@ use Core\Controller;
 use Core\View;
 
 use App\Models\HomeModel;
+use Core\System\System;
+
 
 /**
  * Home controller
@@ -33,7 +35,13 @@ class Home extends Controller {
 		$Plugin = new HelloWorld();
 		$PluginOutput = $Plugin->execute();
 		 */
+<<<<<<< HEAD
         
         View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting()]);
+=======
+
+		$SiteVersion = System::getVersion();
+        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'system_version' => $SiteVersion]);
+>>>>>>> 90097999657363f1aef4a1e33166b7c7085ae23d
     }
 }
