@@ -51,6 +51,19 @@ class View {
 	public static function renderTemplate(string $Template, array $Args = []): void {
 		echo static::getTemplate($Template, $Args);
 	}
+    
+    
+    /**
+     * Render the json api by sending the json header as well as outputting the data required
+     * Just needed a way to output json in a restful-ish way.
+     * @param array $Args
+     * @return void
+     */
+    public static function renderJsonAPI(array $Args): void {
+        $Data = json_encode($Args);
+        header('Content-Type: application/json');
+        echo $Data;
+    }
 
 	/**
 	 * Get the contents of a view template using Twig

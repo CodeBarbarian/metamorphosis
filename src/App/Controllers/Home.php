@@ -33,8 +33,7 @@ class Home extends Controller {
 		$Plugin = new HelloWorld();
 		$PluginOutput = $Plugin->execute();
 		 */
-
-
+        
         View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting()]);
     }
 }
