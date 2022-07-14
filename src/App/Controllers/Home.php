@@ -32,16 +32,12 @@ class Home extends Controller {
 		 * I am not that happy with the plugin system, and kinda would like to redo it some time in the future.
 		 * But it is a good start, and should be dynamic enough for some simple use cases.
 
-		$Plugin = new HelloWorld();
-		$PluginOutput = $Plugin->execute();
+		    $Plugin = new HelloWorld();
+		    $PluginOutput = $Plugin->execute();
 		 */
-<<<<<<< HEAD
-        
-        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting()]);
-=======
 
+        // Site / Framework version
 		$SiteVersion = System::getVersion();
         View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'system_version' => $SiteVersion]);
->>>>>>> 90097999657363f1aef4a1e33166b7c7085ae23d
     }
 }
