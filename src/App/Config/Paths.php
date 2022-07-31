@@ -19,11 +19,19 @@ class Paths extends Config {
 	public static function SITE_ROOT() : string {
 		return ((Site::SECURE_SERVER_COMMUNICATION) ? "https://" : "http://") . $_SERVER['HTTP_HOST'];
 	}
-
+    
+    /**
+     * Core directory
+     */
 	const CORE_DIR = 'Core';
 
 	/**
-	 *
+	 * System directory
 	 */
 	const SYSTEM_DIR = self::CORE_DIR . '/System';
+    
+    /**
+     * Log directory
+     */
+    const SYSTEM_LOGS = 'logs';
 }

@@ -7,6 +7,7 @@
 namespace Core;
 
 use ErrorException;
+use App\Config\Paths;
 
 /**
  * Error and exception handler
@@ -60,7 +61,7 @@ class Error {
 			echo "<p>Stack trace:<pre>" . $Exception->getTraceAsString() . "</pre></p>";
 			echo "<p>Thrown in '" . $Exception->getFile() . "' on line " . $Exception->getLine() . "</p>";
 		} else {
-			$log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
+			$log = dirname(__DIR__) . '/'.Paths::SYSTEM_LOGS.'/' . date('Y-m-d') . '_php.txt';
 			ini_set('error_log', $log);
 
 			$Message = "Uncaught exception: '" . get_class($Exception) . "'";
@@ -69,7 +70,6 @@ class Error {
 			$Message .= "\nThrown in '" . $Exception->getFile() . "' on line " . $Exception->getLine();
 
 			error_log($Message);
-
 			View::renderTemplate("$Code.html");
 		}
 	}
