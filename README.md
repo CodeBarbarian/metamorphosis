@@ -77,7 +77,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Metamorphosis is a PHP framework where I try to update my self on using the new PHP 8.1 syntax, as well as figuring out what the best practices are when it comes to writing PHP in 2022.
+Metamorphosis is a lightweight easy to use, low foot-print framework written in PHP following the Model View Controller design pattern.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
