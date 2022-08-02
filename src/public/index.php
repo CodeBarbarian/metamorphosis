@@ -37,7 +37,12 @@ $Router->add('home', ['controller' => 'Home', 'action' => 'index']);
  * This should be removed, or denied access to when in production.
  */
 $Router->add('about-framework', ['controller' => 'About', 'action' => 'index']);
+
 /**
  * Execute the dispatch to allow navigation and use the QUERY_STRING for pathing
  * */
-$Router->dispatch($_SERVER['QUERY_STRING']);
+try {
+    $Router->dispatch($_SERVER['QUERY_STRING']);
+} catch (Exception $e) {
+    throw new \Exception("Unable to router dispatch!",500);
+}

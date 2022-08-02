@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Core\Model;
 
-
 /**
  *	Home Model
  * @version:
