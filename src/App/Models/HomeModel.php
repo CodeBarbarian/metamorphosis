@@ -5,8 +5,11 @@ namespace App\Models;
 use Core\Model;
 
 /**
- *	Home Model
- * @version:
+ * Home Model class
+ *
+ * @version: PHP: 8.1
+ *
+ * @HomeModel
  */
 class HomeModel extends Model {
 	/**

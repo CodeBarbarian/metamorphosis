@@ -33,16 +33,6 @@ $Router->add('', ['controller' => 'Home', 'action' => 'index']);
 $Router->add('home', ['controller' => 'Home', 'action' => 'index']);
 
 /**
- * Just remove if not needed, it is just a way to keep track of the framework in development.
- * This should be removed, or denied access to when in production.
- */
-$Router->add('about-framework', ['controller' => 'About', 'action' => 'index']);
-
-/**
  * Execute the dispatch to allow navigation and use the QUERY_STRING for pathing
  * */
-try {
-    $Router->dispatch($_SERVER['QUERY_STRING']);
-} catch (Exception $e) {
-    throw new \Exception("Unable to router dispatch!",500);
-}
+$Router->dispatch($_SERVER['QUERY_STRING']);
