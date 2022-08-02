@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Config;
+namespace App\Config\ControllerConfig;
 use Core\Config;
 
 /**

@@ -17,7 +17,7 @@ class Framework extends Controller {
          * We need to check if we are allowed to use this class
          * should be disabled in a production environment
          */
-        if (!\App\Config\Framework::ALLOW_FRAMEWORK_SETTINGS) {
+        if (!\App\Config\ControllerConfig\Framework::ALLOW_FRAMEWORK_SETTINGS) {
             $this->redirect('/home');
         }
     }
