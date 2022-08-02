@@ -35,7 +35,7 @@ class Home extends Controller {
 		    $Plugin = new HelloWorld();
 		    $PluginOutput = $Plugin->execute();
 		 */
-
+        
         // Site / Framework version
 		$SiteVersion = System::getVersion();
         View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'system_version' => $SiteVersion]);
