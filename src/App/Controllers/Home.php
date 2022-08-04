@@ -35,9 +35,66 @@ class Home extends Controller {
 		    $Plugin = new HelloWorld();
 		    $PluginOutput = $Plugin->execute();
 		 */
-        
-        // Site / Framework version
-		$SiteVersion = System::getVersion();
-        View::renderTemplate('Home/index.html', Args: ['message' => HomeModel::getGreeting(), 'system_version' => $SiteVersion]);
+	    View::renderTemplate('Home/index.html', Args: ["framework_version" => System::getVersion()]);
+    }
+    
+    /**
+     * Show the Plugins page
+     *
+     * @throws \Twig\Error\SyntaxError
+     * @throws \ReflectionException
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\LoaderError
+     */
+    public function pluginsAction(): void {
+        View::renderTemplate('Home/plugins.html');
+    }
+    
+    /**
+     * Show the policies page
+     *
+     * @throws \Twig\Error\SyntaxError
+     * @throws \ReflectionException
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\LoaderError
+     */
+    public function policiesAction(): void {
+        View::renderTemplate('Home/policies.html');
+    }
+    
+    /**
+     * Show the localization page
+     *
+     * @throws \Twig\Error\SyntaxError
+     * @throws \ReflectionException
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\LoaderError
+     */
+    public function localizationAction(): void {
+        View::renderTemplate('Home/localization.html');
+    }
+    
+    /**
+     * Show the configurations page
+     *
+     * @throws \Twig\Error\SyntaxError
+     * @throws \ReflectionException
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\LoaderError
+     */
+    public function configurationsAction(): void {
+        View::renderTemplate('Home/configurations.html');
+    }
+    
+    /**
+     * Show the routing page
+     *
+     * @throws \Twig\Error\SyntaxError
+     * @throws \ReflectionException
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\LoaderError
+     */
+    public function routingAction(): void {
+        View::renderTemplate('Home/routing.html');
     }
 }
