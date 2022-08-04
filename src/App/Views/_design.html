@@ -15,15 +15,28 @@
     <link href="{{public_root}}/assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-{% for message in flash_messages %}
-<div class="alert alert-{{ message.type }}">
-    {{ message.body }}
-</div>
-{% endfor %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+            <span class="fs-4">Metamorphosis</span>
+        </a>
+    </header>
 
-<!-- main body content start-->
-{% block body %}{% endblock %}
-<!-- main body content end-->
+    {% for message in flash_messages %}
+    <div class="alert alert-{{ message.type }}">
+        {{ message.body }}
+    </div>
+    {% endfor %}
+
+    <!-- main body content start-->
+    {% block body %}{% endblock %}
+    <!-- main body content end-->
+
+    <footer class="pt-5 my-5 text-muted border-top">
+        Metamorphosis : v{{ framework_version }}
+    </footer>
+</div>
+
 <script src="{{public_root}}/assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -2,11 +2,9 @@
 
 namespace App\Controllers;
 
-use Core\Plugins\HelloWorld\HelloWorld;
 use Core\Controller;
 use Core\View;
 
-use App\Models\HomeModel;
 use Core\System\System;
 
 
@@ -27,14 +25,6 @@ class Home extends Controller {
 	 * @throws \Twig\Error\SyntaxError|\ReflectionException
 	 */
     public function indexAction(): void {
-		/**
-		 * As an example we have a plugin named HelloWorld, which will print Hello World!
-		 * I am not that happy with the plugin system, and kinda would like to redo it some time in the future.
-		 * But it is a good start, and should be dynamic enough for some simple use cases.
-
-		    $Plugin = new HelloWorld();
-		    $PluginOutput = $Plugin->execute();
-		 */
 	    View::renderTemplate('Home/index.html', Args: ["framework_version" => System::getVersion()]);
     }
     

@@ -9,6 +9,7 @@ use Twig\Loader\FilesystemLoader;
 use Core\Localization\Localization;
 use Core\Plugins\Flashcard\Flashcard;
 
+use Core\System\System;
 /**
  * View
  * @version: PHP: 8.1
@@ -74,7 +75,7 @@ class View {
 			$Twig->addGlobal('public_root', Paths::SITE_ROOT());
 			$Twig->addGlobal('flash_messages', Flashcard::getMessages());
 			$Twig->addGlobal('translation', Localization::Translate());
-            
+            $Twig->addGlobal('framework_version', System::getVersion());
             /**
              * Testing twig integration for generating CSRF tokens
              * No validation has been added yet. this is just a function test.

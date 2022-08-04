@@ -1,0 +1,96 @@
+{% extends '_design.html' %}
+
+{% block title %}Plugins{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Get started with Plugins for Metamorphosis</h1>
+    <p class="fs-5 col-md-8">Plugins provide an easy interface for extending the functionality of the metamorphosis
+        framework.</p>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Using plugins</h2>
+
+    <p>When you would like to include a plugin in either a controller or model.</p>
+    <p>This example uses the Hello World Plugin which is included in the framework</p>
+    <ul>
+        <li>Add the following before the model/controller class</li>
+    </ul>
+    <code>
+        <pre>
+            use Core\Plugins\HelloWorld\HelloWorld;s
+        </pre>
+    </code>
+
+    <ul>
+        <li>In your model/controller class, construct and use the plugin</li>
+    </ul>
+
+    <code>
+        <pre>
+            use Core\Plugins\HelloWorld\HelloWorld;
+
+            class Home extends Controller {
+                public static function someAction() : void {
+                    $Plugin = new HelloWorld();
+                    $PluginOutput = $Plugin->execute();
+                }
+            }
+        </pre>
+    </code>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Creating Plugins</h2>
+    <p>All plugins should be place in the <code>./Core/Plugins</code> folder, in a directory with the same name as the plugin, and extend the plugin class. The only
+        function that should return
+        any output should have protected accessor method.</p>
+    <ul>
+        <li>All plugins must extend the plugin class</li>
+        <li>All plugins which provides methods that should be accessible outside of the class must be protected.</li>
+        <li>All plugins must have a configuration file with the NamingConvention PluginNameConfig</li>
+    </ul>
+    <p>Let us take the Hello World plugin as an example</p>
+    <p><u>./Core/Plugins/HelloWorld/<b>HelloWorld.php</b>:</u></p>
+
+    <code>
+        <pre>
+            namespace Core\Plugins\HelloWorld;
+
+            use Core\Plugins\Plugin;
+
+            /**
+             * Hello World Plugin
+             */
+            class HelloWorld extends Plugin {
+                protected function execute() : string {
+                    return "Hello World from Plugin!";
+                }
+            }
+        </pre>
+    </code>
+
+    <p><u>./Core/Plugins/HelloWorld/<b>HelloWorldConfig.php</b></u></p>
+    <code>
+        <pre>
+            namespace Core\Plugins\HelloWorld;
+
+            /**
+             * Hello World Plugin Configuration
+             * @version: PHP: 8.1
+             *
+             * @HelloWorldConfig
+             */
+            class HelloWorldConfig {
+                /**
+                 * Is the plugin enabled
+                 *
+                 * @var bool
+                 */
+                const ENABLED = true;
+            }
+
+        </pre>
+    </code>
+</main>
+
+{% endblock %}
