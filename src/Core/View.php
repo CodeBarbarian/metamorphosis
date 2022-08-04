@@ -76,6 +76,7 @@ class View {
 			$Twig->addGlobal('flash_messages', Flashcard::getMessages());
 			$Twig->addGlobal('translation', Localization::Translate());
             $Twig->addGlobal('framework_version', System::getVersion());
+            
             /**
              * Testing twig integration for generating CSRF tokens
              * No validation has been added yet. this is just a function test.
