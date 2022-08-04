@@ -12,6 +12,9 @@ use Core\View;
  * @Framework
  */
 class Framework extends Controller {
+    /**
+     * @return void
+     */
     protected function before(): void {
         /**
          * We need to check if we are allowed to use this class
@@ -22,11 +25,24 @@ class Framework extends Controller {
         }
     }
     
+    /**
+     * @return void
+     * @throws \ReflectionException
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function indexAction() : void {
         View::renderTemplate('Framework/index.html');
     }
     
+    /**
+     * @throws \Twig\Error\SyntaxError
+     * @throws \ReflectionException
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\LoaderError
+     */
     public function settingsAction() : void {
-    
+        View::renderTemplate('Framework/settings.html');
     }
 }
