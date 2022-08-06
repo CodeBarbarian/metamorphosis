@@ -1,0 +1,258 @@
+{% extends '_design.html' %}
+
+{% block title %}Policies{% endblock %}
+
+{% block body %}
+
+<main>
+    <h1>Get started with policies for Metamorphosis</h1>
+    <p class="fs-5 col-md-8">Policies provides an interface for enforcing compliance throughout the metamorphosis framework.</p>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Using Policies</h2>
+
+    <p>Policies are configurable classes to keep, manage and enforce different compliance requirements aspects of the framework.
+    Some Policies are responsible for Password Complexity, User Account Names, Firewalling, Access Restrictions, Logging and much more. </p>
+
+    <p>Feel free to change the policies to suit your requirements.</p>
+
+    <p>To use a policy within the framework with an engine:</p>
+    <ol>
+        <li>Include the policy engine using the <code>use Core\Policies\Path\To\PolicyEngine;</code></li>
+        <li>Enforce the policy: <code>PolicyEngine::enforceCompliance();</code></li>
+    </ol>
+
+    <p>To use a policy within the framework without an engine:</p>
+    <ol>
+        <li>Include the policy using the <code>use Core\Policies\Path\To\Policy;</code></li>
+        <li>Check Compliance using the: <code>Policy::checkCompliance();</code></li>
+    </ol>
+
+    <p>Let us take a look at the UsernamePolicy as an example. The username policy does not require an engine since the username policy is only checking for compliance not enforcing it.</p>
+    <code>
+        <pre>
+            namespace App\Models;
+
+            use Core\Model;
+            use Core\Policies\Account\Username\UsernamePolicy;
+
+            class SomeModel extends Model {
+                public static function validateUsername() : bool {
+                    $Username = "ThisIsJustATest";
+                    if (!UsernamePolicy::checkCompliance($Username) {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        </pre>
+    </code>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Creating Policies</h2>
+
+    <p>All Policies are located in <code>./Core/Policies/*</code>. In their own sub directory.</p>
+    <p>Standard Directory structure of Policies</p>
+    <ul>
+        <li>Policies</li>
+        <ul>
+            <li>Policy Directory</li>
+            <li>Engine file (If present)</li>
+            <ul>
+                <li>Individual policy files (if engine is present)</li>
+            </ul>
+        </ul>
+    </ul>
+
+    <p>Two things are required to create a policy</p>
+    <ol>
+        <li>Extending the Policy Class</li>
+        <li>Implement iPolicy Interface</li>
+    </ol>
+
+    <p>Let us have a look at the UsernamePolicy.</p>
+    <p><u><code>./Core/Policies/Account/Username/UsernamePolicy.php:</code></u></p>
+    <code>
+        <pre>
+            namespace Core\Policies\Account\Username;
+
+            use Core\Policies\Policy;
+            use Core\Policies\iPolicy;
+
+            /**
+             * Username Policy
+             * @version: PHP: 8.1
+             *
+             * @UsernamePolicy
+             */
+            class UsernamePolicy extends Policy implements iPolicy {
+                /**
+                 * Minimum Username Length
+                 * @var int
+                 */
+                const MIN_LENGTH = 5;
+
+                /***
+                 * Maximum Username Length
+                 * @var int
+                 */
+                const MAX_LENGTH = 15;
+
+                /**
+                 * Allowed characters in the username.
+                 * As we don't want to store usernames in uppercase,
+                 * let us just allow lowercase. We should convert all uppercase
+                 * characters in the username to lowercase anyhow.
+                 */
+                const ALLOWED_CHARACTERS = "@[a-z0-9]@";
+
+                /**
+                 * Check Username Length Complexity Requirements
+                 *
+                 * @param $Username
+                 * @return bool
+                 */
+                private static function checkUsernameComplexityLength($Username) : bool {
+                    if (strlen($Username) < self::MIN_LENGTH || strlen($Username) > self::MAX_LENGTH) {
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                /**
+                 * Check Username Allowed Characters Complexity Requirements
+                 *
+                 * @param $Username
+                 * @return bool
+                 */
+                private static function checkUsernameComplexityCharacters($Username) : bool {
+                    if (!preg_match(self::ALLOWED_CHARACTERS, $Username)) {
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                /**
+                 * Check username compliance
+                 *
+                 * @param $ComplianceItem
+                 * @return bool
+                 */
+                public static function checkCompliance($ComplianceItem): bool {
+                    if (!self::checkUsernameComplexityLength($ComplianceItem)) {
+                        return false;
+                    }
+
+                    if (!self::checkUsernameComplexityCharacters($ComplianceItem)) {
+                        return false;
+                    }
+
+                    return true;
+                }
+            }
+        </pre>
+    </code>
+
+    <p>What can we learn from this?</p>
+    <ul>
+        <li>Some policies check for compliance, while engines enforces compliance.</li>
+    </ul>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Policy Engines</h2>
+    <p>Policy Engines are responsible for the enforcement of policies. </p>
+
+    <p>Let us look at a complete example using the Firewall Engine, and the Inbound Firewall Policy</p>
+    <p><u><code>./Core/Policies/Firewall/Firewall.php:</code> Engine File</u></p>
+    <code>
+        <pre>
+            namespace Core\Policies\Firewall;
+
+            use Core\Policies\iPolicyEngine;
+            use Core\Policies\Firewall\Inbound\FirewallPolicy;
+            use Core\Policies\PolicyEngine;
+
+            /**
+             * Firewall Engine
+             * @version: PHP: 8.1
+             *
+             * @Firewall
+             */
+            class Firewall extends PolicyEngine implements iPolicyEngine {
+                /**
+                 * Retrieve Remote Server Address.
+                 * Depending on implementation this is easier for now. As time
+                 * changes different implementations of remote address may be required.
+                 * For now, this is good enough for development.
+                 *
+                 * @return string
+                 */
+                private static function getRemoteAddress() : string {
+                    return $_SERVER['REMOTE_ADDR'];
+                }
+
+                /***
+                 * Enforce compliance method.
+                 *
+                 * Retrieve the Remote IP Address using the static getRemoteAddress method,
+                 * check against the policies included.
+                 *
+                 * @return void
+                 */
+                public static function enforceCompliance(): void {
+                    if (FirewallPolicy::checkCompliance(self::getRemoteAddress())) {
+                        http_response_code(403);
+                        die("Sorry, you are not allowed to enter the site");
+                    }
+                }
+            }
+        </pre>
+    </code>
+
+    <p><u><code>./Core/Policies/Firewall/Inbound/FirewallPolicy.php: </code>Inbound Firewall Policy</u></p>
+    <code>
+        <pre>
+            namespace Core\Policies\Firewall\Inbound;
+
+            use Core\Policies\iPolicy;
+            use Core\Policies\Policy;
+
+            /**
+             * Firewall Policy
+             *
+             * @version: PHP:8.1
+             */
+            class FirewallPolicy extends Policy implements iPolicy {
+                /**
+                 * IP Blacklist for Inbound Firewall Rules
+                 * Supports both IPv4 and IPv6
+                 * @var array
+                 */
+                const INBOUND_RULES_BLACKLIST = array (
+                    /*
+                    "127.0.0.1",
+                    "::1"
+                    */
+                );
+
+                /**
+                 * checkCompliance
+                 *
+                 * @param $ComplianceItem
+                 * @return bool
+                 */
+                public static function checkCompliance($ComplianceItem) : bool {
+                    if (!in_array($ComplianceItem,self::INBOUND_RULES_BLACKLIST)) {
+                        return false;
+                    }
+
+                    return true;
+                }
+            }
+        </pre>
+    </code>
+</main>
+
+{% endblock %}

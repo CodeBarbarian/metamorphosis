@@ -29,8 +29,8 @@ $Router->add('{controller}/{action}');
 /**
  * Add the routes for the Home Controller and the index action
  * */
-$Router->add('', ['controller' => 'Home', 'action' => 'index']);
-$Router->add('home', ['controller' => 'Home', 'action' => 'index']);
+$Router->add('', ['controller' => 'About', 'action' => 'index']);
+$Router->add('home', ['controller' => 'About', 'action' => 'index']);
 
 /**
  * Execute the dispatch to allow navigation and use the QUERY_STRING for pathing

@@ -3,13 +3,14 @@
 namespace Core\Policies\Firewall\Inbound;
 
 use Core\Policies\iPolicy;
+use Core\Policies\Policy;
 
 /**
  * Firewall Policy
  *
  * @version: PHP:8.1
  */
-class FirewallPolicy implements iPolicy {
+class FirewallPolicy extends Policy implements iPolicy {
 	/**
 	 * IP Blacklist for Inbound Firewall Rules
 	 * Supports both IPv4 and IPv6
