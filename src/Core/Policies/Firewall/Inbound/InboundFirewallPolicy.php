@@ -6,13 +6,13 @@ use Core\Policies\iPolicy;
 use Core\Policies\Policy;
 
 /**
- * Firewall Policy
+ * FirewallEngine Policy
  *
  * @version: PHP:8.1
  */
-class FirewallPolicy extends Policy implements iPolicy {
+class InboundFirewallPolicy extends Policy implements iPolicy {
 	/**
-	 * IP Blacklist for Inbound Firewall Rules
+	 * IP Blacklist for Inbound FirewallEngine Rules
 	 * Supports both IPv4 and IPv6
 	 * @var array
 	 */
