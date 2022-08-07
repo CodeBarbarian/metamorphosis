@@ -24,4 +24,59 @@ class FrameworkModel extends Model {
      * - Overview of Configurations
      * - Overview of Objects Set in Scope (Live Stack Trace)
      */
+    private static function getContents(string $Pattern, bool $DIRONLY = false, bool $BASEONLY = false): array {
+        $Directories = array();
+        
+        if ($DIRONLY) {
+            foreach(glob($Pattern, GLOB_ONLYDIR) as $Directory) {
+                $Directories[] = basename($Directory);
+            }
+        } else {
+            foreach(glob($Pattern) as $Directory) {
+                $Directories[] = basename($Directory);
+            }
+        }
+        
+        return $Directories;
+    }
+    
+    private static function getControllers() : array {
+        return static::getContents('../'.\App\Config\Paths::CONTROLLER_DIR.'/*');
+    }
+    
+    private static function getModels() : array {
+        return static::getContents('../'.\App\Config\Paths::MODEL_DIR.'/*');
+    }
+    
+    private static function getPlugins() : array {
+        return static::getContents('../'.\App\Config\Paths::PLUGIN_DIR.'/*');
+    }
+    
+    private static function getPolicies() : array {
+        return static::getContents('../'.\App\Config\Paths::POLICY_DIR.'/*');
+    }
+    
+    private static function getLocalizations() : array {
+        return static::getContents('../'.\App\Config\Paths::LOCALIZATION_DIR.'/*');
+    }
+    
+    public static function getFrameworkInformation(string $Selector) {
+        switch ($Selector) {
+            case 'controllers':
+                return static::getControllers();
+                break;
+            case 'models':
+                return static::getModels();
+                break;
+            case 'plugins':
+                return static::getPlugins();
+                break;
+            case 'policies':
+                return static::getPolicies();
+                break;
+            case 'localization':
+                return static::getLocalizations();
+                break;
+        }
+    }
 }

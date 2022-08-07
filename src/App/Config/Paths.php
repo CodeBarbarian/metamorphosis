@@ -44,9 +44,19 @@ class Paths extends Config {
      */
     const LOCALIZATION_DIR = self::CORE_DIR . '/Localization';
     
+    const PLUGIN_DIR = self::CORE_DIR . '/Plugins';
+    
     /**
      * Language directory
      * @var string
      */
     const LANGUAGE_DIR = self::LOCALIZATION_DIR . '/Languages';
+    
+    const APPLICATION_DIR = 'App';
+    
+    const POLICY_DIR = self::CORE_DIR . '/Policies';
+    
+    const CONTROLLER_DIR = self::APPLICATION_DIR . '/Controllers';
+    const MODEL_DIR = self::APPLICATION_DIR . '/Models';
+    const VIEW_DIR = self::APPLICATION_DIR . '/Views';
 }

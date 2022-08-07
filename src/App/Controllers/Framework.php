@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\FrameworkModel;
 use Core\Controller;
 use Core\View;
 
@@ -33,7 +34,23 @@ class Framework extends Controller {
      * @throws \Twig\Error\SyntaxError
      */
     public function indexAction() : void {
-        View::renderTemplate('Framework/index.html');
+        $Controllers = FrameworkModel::getFrameworkInformation('controllers');
+        $Models = FrameworkModel::getFrameworkInformation('models');
+        $Plugins = FrameworkModel::getFrameworkInformation('plugins');
+        $Policies = FrameworkModel::getFrameworkInformation('policies');
+        $Localizations = FrameworkModel::getFrameworkInformation('localization');
+        
+        View::renderTemplate('Framework/index.html', [
+            'controllers' => $Controllers,
+            'models' => $Models,
+            'plugins' => $Plugins,
+            'policies' => $Policies,
+            'localizations' => $Localizations
+            ]);
+    }
+    
+    public function controllerAction() : void {
+        View::renderTemplate('Framework/controllers.html');
     }
     
     /**

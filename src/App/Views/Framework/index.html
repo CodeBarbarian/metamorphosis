@@ -4,4 +4,80 @@
 
 {% block body %}
 <h1>Framework Development Menu</h1>
+
+<hr class="col-3 col-md-2 mb-5">
+<h2>Controller Overview</h2>
+
+<table class="table">
+    <tr>
+        <th class="col">Controllers</th>
+    </tr>
+
+    {% for items in controllers %}
+    <tr>
+        <td>{{ items }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr class="col-3 col-md-2 mb-5">
+<h2>Model Overview</h2>
+
+<table class="table">
+    <tr>
+        <th class="col">Models</th>
+    </tr>
+
+    {% for items in models %}
+    <tr>
+        <td>{{ items }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr class="col-3 col-md-2 mb-5">
+<h2>Plugin Overview</h2>
+
+<table class="table">
+    <tr>
+        <th class="col">Plugins</th>
+    </tr>
+
+    {% for items in plugins %}
+    <tr>
+        <td>{{ items }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr class="col-3 col-md-2 mb-5">
+<h2>Policies Overview</h2>
+
+<table class="table">
+    <tr>
+        <th class="col">Policies</th>
+    </tr>
+
+    {% for items in policies %}
+    <tr>
+        <td>{{ items }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr class="col-3 col-md-2 mb-5">
+<h2>Localization Overview</h2>
+
+<table class="table">
+    <tr>
+        <th class="col">Localization</th>
+    </tr>
+
+    {% for items in localizations %}
+    <tr>
+        <td>{{ items }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}
