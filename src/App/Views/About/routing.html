@@ -6,9 +6,28 @@
 
 <main>
     <h1>Get started with <strong>Routing</strong> for Metamorphosis</h1>
-    <p class="fs-5 col-md-8"></p>
+    <p class="fs-5 col-md-8">Routing is responsible for the way people navigate the application. There are so many ways routing can be done, and many pitfalls.
+    Routing may be your friend if you use it correctly</p>
+
+    <p>The standard route: <code>$Router->add('{controller}/{action}');</code> covers the majority of uses.</p>
 
     <hr class="col-3 col-md-2 mb-5">
+    <h2>Using routing with parameters</h2>
+    <p>Let us say you are accessing a specific item <code>https://websitename.org/database/items/53</code>. Then you need to add the following route into your routing table: </p>
+    <code>$Router->add('database/items/{id:[\da-f]+}', ['controller' => 'Database', 'action' => 'items']);</code>
+
+    <p>When having characters in the address it is good practice to only allow hexadecimal input.</p>
+    <p>You can use almost any custom regex you want in the parameters.</p>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Using routing with custom URIs</h2>
+    <p>To create custom routes. Just add them to your routing table and select a controller and an action</p>
+
+    <code>
+        <pre>
+            $Router->add('test/test1/test2/test3/test4', ['controller' => 'About', 'action' => 'index']);
+        </pre>
+    </code>
 </main>
 
 {% endblock %}
