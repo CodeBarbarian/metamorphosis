@@ -5,7 +5,65 @@
 {% block body %}
 
 <main>
+    <h1>Get started with <strong>Configurations</strong> for Metamorphosis</h1>
+    <p class="fs-5 col-md-8">Configuration files are an easy way to store hard coded data for your controllers, models, plugins and other objects.</p>
 
+    <hr class="col-3 col-md-2 mb-5">
+
+    <h2>Using Configurations</h2>
+    <p>To access any configuration value, access it using static method: <code>\App\Config\CONFIGFILE::PROPERTY</code></p>
+    <p>In this example we access the static property of the Error.php for showing errors or not: </p>
+    <code>
+        <pre>
+            if (\App\Config\Error::SHOW_ERRORS)
+        </pre>
+    </code>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Creating Configurations</h2>
+    <p>To create a configuration file, place it in the Configurations directory and make sure to set the correct namespace</p>
+    <p>As an example we use the Error Configuration file: </p>
+    <code>
+        <pre>
+            namespace App\Config;
+
+            use Core\Config;
+
+            /**
+             * Error Config
+             * @version: PHP: 8.1
+             *
+             * @Error
+             */
+            class Error extends Config {
+                /**
+                 * Show or hide error messages on screen
+                 * @var boolean
+                 */
+                const SHOW_ERRORS = true;
+            }
+        </pre>
+    </code>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Production vs Development Environment</h2>
+    <h3>Development Environment</h3>
+    <p>When developing applications, it is recommended to use the following settings on in your configurations:</p>
+    <ul>
+        <li>In <code>./App/Config/Error.php: SHOW_ERRORS = true; </code></li>
+        <li>In <code>./App/Config/Site.php: SECURE_SERVER_COMMUNICATION = false</code></li>
+        <li>In <code>./App/Config/Site.php: SYSTEM_ENVIRONMENT = 'development';</code></li>
+        <li>In <code>./App/Config/ControllerConfig/Framework.php: ALLOW_FRAMEWORK_SETTINGS = true</code></li>
+    </ul>
+
+    <h3>Production Environment</h3>
+    <p>When you have finished developing your application, it is recommended to use the following settings in your configurations:</p>
+    <ul>
+        <li>In <code>./App/Config/Error.php: SHOW_ERRORS = false; </code></li>
+        <li>In <code>./App/Config/Site.php: SECURE_SERVER_COMMUNICATION = true</code></li>
+        <li>In <code>./App/Config/Site.php: SYSTEM_ENVIRONMENT = 'production';</code></li>
+        <li>In <code>./App/Config/ControllerConfig/Framework.php: ALLOW_FRAMEWORK_SETTINGS = false</code></li>
+    </ul>
 </main>
 
 {% endblock %}

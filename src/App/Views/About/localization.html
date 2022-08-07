@@ -5,7 +5,62 @@
 {% block body %}
 
 <main>
+    <h1>Get started with <strong>Localization</strong> for Metamorphosis</h1>
+    <p class="fs-5 col-md-8">Localization provides an interface to translate languages to content readers native language.</p>
 
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Using Localization</h2>
+    <p>Localization is added to the global scope of twig, and can be accessed using the <code>&#123;&#123; translation.KEY_WORD &#125;&#125;</code></p>
+
+    <p>In the following example we are getting the header title</p>
+    <code>
+        <pre>
+            &#123;&#123; translation.fields_header_title &#125;&#125;
+        </pre>
+    </code>
+
+    <p>All the translation files are located in <code>./Core/Localization/Languages/*</code></p>
+    <p>To access any key in the translation array, just make sure it is present in the language files, and use the syntax above in an html template</p>
+
+    <hr class="col-3 col-md-2 mb-5">
+    <h2>Creating Localization</h2>
+
+    <p>To create a new language which can be translated add a new language file in <code>./Code/Localization/Languages/shortname.php</code> where shortname is the HTTP_ACCEPT_LANGUAGE in two-three letters.</p>
+    <p>Example below uses the English translation class</p>
+    <code>
+        <pre>
+            namespace Core\Localization\Languages;
+
+            use Core\Localization\Localization;
+            use Core\Localization\iLanguage;
+
+            /**
+             * English localization class
+             *
+             * @version: PHP: 8.1
+             * @en
+             */
+            class en extends Localization implements iLanguage {
+                public static array $Language = array(
+                    /**
+                     * The naming convention should be based on the following
+                     *
+                     * [COMPONENT_LOCATION_NAME]
+                     */
+                    "fields_header_title" => "Hello World!"
+                );
+
+                /**
+                 * Static get the language array
+                 *
+                 * @return array
+                 */
+                public static function getLanguage(): array {
+                    return static::$Language;
+                }
+            }
+        </pre>
+    </code>
 </main>
 
 {% endblock %}
