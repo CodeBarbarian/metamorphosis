@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Core\Controller;
 use Core\View;
+use Core\Token;
 
 /**
  * About Controller
@@ -19,7 +20,7 @@ class About extends Controller {
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\LoaderError
      */
-    public static function indexAction() : void {
+    public function indexAction() : void {
         View::renderTemplate('About/index.html');
     }
     
@@ -29,7 +30,7 @@ class About extends Controller {
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\LoaderError
      */
-    public static function pluginsAction() : void {
+    public function pluginsAction() : void {
         View::renderTemplate('About/plugins.html');
     }
     
@@ -39,7 +40,7 @@ class About extends Controller {
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\LoaderError
      */
-    public static function policiesAction() : void {
+    public function policiesAction() : void {
         View::renderTemplate('About/policies.html');
     }
     
@@ -49,7 +50,7 @@ class About extends Controller {
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\LoaderError
      */
-    public static function localizationAction() : void {
+    public function localizationAction() : void {
         View::renderTemplate('About/localization.html');
     }
     
@@ -59,7 +60,7 @@ class About extends Controller {
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\LoaderError
      */
-    public static function configurationsAction() : void {
+    public function configurationsAction() : void {
         View::renderTemplate('About/configurations.html');
     }
     
@@ -69,7 +70,7 @@ class About extends Controller {
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\LoaderError
      */
-    public static function routingAction() : void {
+    public function routingAction() : void {
         View::renderTemplate('About/routing.html');
     }
 }

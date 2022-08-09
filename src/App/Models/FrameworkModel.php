@@ -57,7 +57,7 @@ class FrameworkModel extends Model {
     }
     
     private static function getLocalizations() : array {
-        return static::getContents('../'.\App\Config\Paths::LOCALIZATION_DIR.'/*');
+        return static::getContents('../'.\App\Config\Paths::LOCALIZATION_DIR.'/Languages/*');
     }
     
     public static function getFrameworkInformation(string $Selector) {

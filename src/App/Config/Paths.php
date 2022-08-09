@@ -43,7 +43,11 @@ class Paths extends Config {
      * @var string
      */
     const LOCALIZATION_DIR = self::CORE_DIR . '/Localization';
-    
+
+	/**
+	 * Plugin directory
+	 * @var string
+	 */
     const PLUGIN_DIR = self::CORE_DIR . '/Plugins';
     
     /**
@@ -51,12 +55,34 @@ class Paths extends Config {
      * @var string
      */
     const LANGUAGE_DIR = self::LOCALIZATION_DIR . '/Languages';
-    
+
+	/**
+	 * Application directory
+	 * @var string
+	 */
     const APPLICATION_DIR = 'App';
-    
+
+	/**
+	 * Policy directory
+	 * @var string
+	 */
     const POLICY_DIR = self::CORE_DIR . '/Policies';
-    
+
+	/**
+	 * Controller directory
+	 * @var string
+	 */
     const CONTROLLER_DIR = self::APPLICATION_DIR . '/Controllers';
+
+	/**
+	 * Model directory
+	 * @var string
+	 */
     const MODEL_DIR = self::APPLICATION_DIR . '/Models';
-    const VIEW_DIR = self::APPLICATION_DIR . '/Views';
+
+	/**
+	 * Views directory
+	 * @var string
+	 */
+	const VIEW_DIR = self::APPLICATION_DIR . '/Views';
 }

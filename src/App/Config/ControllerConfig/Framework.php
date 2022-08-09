@@ -14,6 +14,8 @@ class Framework extends Config {
     /**
      * Framework settings. Good during development, bad during
      * production.
+	 *
+	 * @var bool
      */
     const ALLOW_FRAMEWORK_SETTINGS = true;
 }
