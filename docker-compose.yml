@@ -12,7 +12,7 @@ services:
     container_name: metamorphosis-database-server-server
     image: codebarbarian/metamorphosis-database-server:latest
     volumes:
-      - ./docker/metamorphosis-database-server-server/var/lib/mysql:/var/lib/mysql
+      - ./docker/metamorphosis-database-server/var/lib/mysql:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=metamorphosis
       - MYSQL_USER=metamorphosis

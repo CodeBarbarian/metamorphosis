@@ -1,1 +1,2 @@
-/.idea/*
+.idea/*
+docker/metamorphosis-database-server/var/lib/mysql
