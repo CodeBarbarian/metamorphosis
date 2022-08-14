@@ -13,7 +13,7 @@ use App\Config\Paths;
  */
 class Localization implements iLocalization {
     /**
-     * Method for returning the HTTP_ACCEPT_LANGUAGE recieved by the server
+     * Method for returning the HTTP_ACCEPT_LANGUAGE received by the server
      *
      * @return string
      */
@@ -89,6 +89,11 @@ class Localization implements iLocalization {
      */
 	public static function Translate() {
 		if (Language::USE_TRANSLATIONS) {
+			// Check if we actually receive HTTP_ACCEPT_LANGUAGE
+			if (!static::getAgentLanguage()) {
+				return false;
+			}
+
             /**
              * We need to check to see if the default language file exists.
              * If it does not exist, we have no reference so return false.
