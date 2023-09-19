@@ -56,7 +56,7 @@ class FirewallEngine extends PolicyEngine implements iPolicyEngine {
             }
         } else {
             http_response_code(403);
-            die("Blocked by software firewall.");
+            die("Blocked by internal firewall.");
         }
 	}
 }
