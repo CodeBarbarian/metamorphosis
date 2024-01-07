@@ -61,12 +61,13 @@ class Flashcard extends Plugin {
 	 * @return array|bool An array with all the messages or null if none set
 	 */
 	public static function getMessages(): array|bool {
-		if (isset($_SESSION['flash_notifications'])) {
-			$Messages = $_SESSION['flash_notifications'];
-			unset($_SESSION['flash_notifications']);
+        if (isset($_SESSION['flash_notifications'])) {
+            $Messages = $_SESSION['flash_notifications'];
+            unset($_SESSION['flash_notifications']);
 
-			return $Messages;
-		}
+            return $Messages;
+        }
+
 		return false;
 	}
 }

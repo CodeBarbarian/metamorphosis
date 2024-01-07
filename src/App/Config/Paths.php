@@ -85,4 +85,10 @@ class Paths extends Config {
 	 * @var string
 	 */
 	const VIEW_DIR = self::APPLICATION_DIR . '/Views';
+
+	/**
+	 * Cache Directory
+	 * @var string
+	 */
+	const CACHE_DIR = self::APPLICATION_DIR . '/Cache';
 }

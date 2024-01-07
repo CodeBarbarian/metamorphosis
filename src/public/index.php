@@ -4,6 +4,8 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+use App\Application;
+
 /**
  * Error and Exception handling
  */
@@ -31,7 +33,12 @@ $Router->add('{controller}/{action}');
  * */
 $Router->add('', ['controller' => 'About', 'action' => 'index']);
 $Router->add('home', ['controller' => 'About', 'action' => 'index']);
+
+// For development use only
+$Router->add('development/cache/clear', ['controller' => 'Development', 'action' => 'cacheclear']);
+
 /**
  * Execute the dispatch to allow navigation and use the QUERY_STRING for pathing
  * */
 $Router->dispatch($_SERVER['QUERY_STRING']);
+

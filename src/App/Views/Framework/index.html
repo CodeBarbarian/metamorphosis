@@ -13,11 +13,11 @@
         <th class="col">Controllers</th>
     </tr>
 
-    {% for items in controllers %}
+    {% foreach($controllers as $controller): %}
     <tr>
-        <td>{{ items }}</td>
+        <td>{{ $controller }}</td>
     </tr>
-    {% endfor %}
+    {% endforeach; %}
 </table>
 
 <hr class="col-3 col-md-2 mb-5">
@@ -28,11 +28,11 @@
         <th class="col">Models</th>
     </tr>
 
-    {% for items in models %}
+    {% foreach($models as $model): %}
     <tr>
-        <td>{{ items }}</td>
+        <td>{{ $model }}</td>
     </tr>
-    {% endfor %}
+    {% endforeach; %}
 </table>
 
 <hr class="col-3 col-md-2 mb-5">
@@ -43,11 +43,11 @@
         <th class="col">Plugins</th>
     </tr>
 
-    {% for items in plugins %}
+    {% foreach($plugins as $plugin): %}
     <tr>
-        <td>{{ items }}</td>
+        <td>{{ $plugin }}</td>
     </tr>
-    {% endfor %}
+    {% endforeach; %}
 </table>
 
 <hr class="col-3 col-md-2 mb-5">
@@ -58,11 +58,11 @@
         <th class="col">Policies</th>
     </tr>
 
-    {% for items in policies %}
+    {% foreach($policies as $policy): %}
     <tr>
-        <td>{{ items }}</td>
+        <td>{{ $policy }}</td>
     </tr>
-    {% endfor %}
+    {% endforeach; %}
 </table>
 
 <hr class="col-3 col-md-2 mb-5">
@@ -72,12 +72,11 @@
     <tr>
         <th class="col">Localization</th>
     </tr>
-
-    {% for items in localizations %}
+    {% foreach($localizations as $locale): %}
     <tr>
-        <td>{{ items }}</td>
+        <td>{{ $locale }}</td>
     </tr>
-    {% endfor %}
+    {% endforeach; %}
 </table>
 
 {% endblock %}

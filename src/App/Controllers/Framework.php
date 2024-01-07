@@ -40,7 +40,7 @@ class Framework extends Controller {
         $Policies = FrameworkModel::getFrameworkInformation('policies');
         $Localizations = FrameworkModel::getFrameworkInformation('localization');
         
-        View::renderTemplate('Framework/index.html', [
+        View::getTemplate('Framework/index.html', [
             'controllers' => $Controllers,
             'models' => $Models,
             'plugins' => $Plugins,
@@ -50,7 +50,7 @@ class Framework extends Controller {
     }
     
     public function controllerAction() : void {
-        View::renderTemplate('Framework/controllers.html');
+        View::getTemplate('Framework/controllers.html');
     }
     
     /**

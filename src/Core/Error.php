@@ -70,7 +70,8 @@ class Error {
 			$Message .= "\nThrown in '" . $Exception->getFile() . "' on line " . $Exception->getLine();
 
 			error_log($Message);
-			View::renderTemplate("$Code.html");
+            var_dump($Code . '.html');
+			View::getTemplate($Code . '.html');
 		}
 	}
 }

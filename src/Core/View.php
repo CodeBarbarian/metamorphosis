@@ -3,85 +3,74 @@
 namespace Core;
 
 use App\Config\Paths;
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
-
-use Core\Localization\Localization;
 use Core\Plugins\Flashcard\Flashcard;
-
+use Core\Plugins\TinyTemplate\TinyTemplate;
 use Core\System\System;
+
 /**
  * View
  * @version: PHP: 8.1
  *
  * @View
  */
-class View {
-	/**
-	 * Render a view file
-	 *
-	 * @param string $View
-	 * @param array  $Args
-	 * @return void
-	 * @throws \Exception
-	 */
-	public static function render(string $View, array $Args = []): void {
-		extract($Args, EXTR_SKIP);
+class View
+{
+    /**
+     * Render a view file
+     *
+     * @param string $View
+     * @param array $Args
+     * @return void
+     * @throws \Exception
+     */
+    public static function render(string $View, array $Args = []): void
+    {
+        extract($Args, EXTR_SKIP);
 
-		$File = sprintf("%s/App/Views/$View", dirname(__DIR__));  // relative to Core directory
+        $File = sprintf("%s/App/Views/$View", dirname(__DIR__));  // relative to Core directory
 
-		if (is_readable($File)) {
-			require $File;
-		} else {
-			throw new \Exception("$File not found");
-		}
-	}
+        if (is_readable($zFile)) {
+            require $File;
+        } else {
+            throw new \Exception("$File not found");
+        }
+    }
 
-	/**
-	 * Render a view template using Twig
-	 *
-	 * @param string $Template
-	 * @param array  $Args
-	 * @return void
-	 * @throws \Twig\Error\LoaderError
-	 * @throws \Twig\Error\RuntimeError
-	 * @throws \Twig\Error\SyntaxError
-	 * @throws \ReflectionException
-	 */
-	public static function renderTemplate(string $Template, array $Args = []): void {
-		echo static::getTemplate($Template, $Args);
-	}
+    public static function renderTemplate(string $Template, array $Args = []) : void {
+        echo static::getTemplate($Template, $Args);
+    }
 
-	/**
-	 * Get the contents of a view template using Twig
-	 *
-	 * @param string $Template
-	 * @param array  $Args
-	 *
-	 * @return string|bool
-	 *
-	 * @throws \Twig\Error\LoaderError
-	 * @throws \Twig\Error\RuntimeError
-	 * @throws \Twig\Error\SyntaxError
-	 * @throws \ReflectionException
-	 */
-	public static function getTemplate(string $Template, array $Args = []): string|bool {
-		static $Twig = null;
+    public static function getTemplate(string $Template, array $Args = []): bool
+    {
+        static $Tiny = null;
 
-		if ($Twig === null) {
-			$Loader = new FilesystemLoader(dirname(__DIR__) . '/App/Views');
-			$Twig = new Environment($Loader);
+        if ($Tiny === null) {
+            /**
+             * @TODO: Change these to be added by setter instead. This works, so we can let the class do all the magic. \
+             * this was simply a way to get it to work
+             */
+            $ViewDirectory = dirname(__DIR__) . '/App/Views';
+            $CacheDirectory = dirname(__DIR__) . '/App/Cache';
 
-			$Twig->addGlobal('public_root', Paths::SITE_ROOT());
-			$Twig->addGlobal('flash_messages', Flashcard::getMessages());
-			$Twig->addGlobal('translation', Localization::Translate());
-            $Twig->addGlobal('framework_version', System::getVersion());
+            $Tiny = new TinyTemplate();
+            $Tiny->setViewsDirectory($ViewDirectory);
+            $Tiny->setCacheDirectory($CacheDirectory);
+            /**
+             * Template Variables
+             */
+            $Tiny->setGlobal("public_root", Paths::SITE_ROOT());
+            $Tiny->setGlobal("framework_version", System::getVersion());
+            $Tiny->setGlobal("flash_message", Flashcard::getMessages());
         }
 
-		if (!empty($Template)) {
-			return $Twig->render($Template, $Args);
-		}
+        /**
+         * Render the template view
+         */
+        if (!empty($Template)) {
+            //$Tiny::View($Template, $Args);
+            $Tiny->execute($Template, $Args);
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

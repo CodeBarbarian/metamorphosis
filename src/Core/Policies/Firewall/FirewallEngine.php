@@ -17,7 +17,7 @@ class FirewallEngine extends PolicyEngine implements iPolicyEngine {
      * Determine firewall direction
      * @var string
      */
-    const FIREWALL_DIRECTION = 'inbound';
+    const  FIREWALL_DIRECTION = 'inbound';
     
     /**
 	 * Retrieve Remote Server Address.
